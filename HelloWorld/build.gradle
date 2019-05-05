@@ -1,0 +1,21 @@
+import java.text.*
+
+println "Hello without any task"
+
+task('hello').doLast {
+    println "Hello World!!"
+}
+
+task('helloWithDate').doLast {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+    sdf.setTimeZone(TimeZone.getTimeZone("UTC"))
+
+    println "Hello World!!  Groovy is backwards compatible with Java"
+    println "Date and time: " + sdf.format(new Date())
+}
+
+task('codeInterpolation').doLast {
+    String s = "hey there"
+    // only works for double quotes
+    println "string in upper case ${s.toUpperCase()}"
+}

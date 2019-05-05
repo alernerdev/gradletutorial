@@ -1,0 +1,26 @@
+class Person {
+    Integer age
+    String name
+
+    Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+}
+
+Person person = new Person("fred", 50)
+println person.getName()
+person.age = 46
+println "it only looks like direct access.  all done with getters/setters"
+println person.age
+
+def UsingHashmaps() {
+    Map m = new HashMap()
+    m.put('foo', 'fred')
+    println "using maps: " + m.get('foo')
+
+    // setter invoked behind the scenes
+    m.boo = 123
+    println "using msps: " + m.boo
+}
+UsingHashmaps()

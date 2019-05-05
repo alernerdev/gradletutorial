@@ -1,0 +1,44 @@
+def echoIt = {
+    println "Hello World"
+}
+
+def echoIt2 = {param1, param2 ->
+    println param1+ ", " + param2
+}
+
+def echoIt3 = {Integer param1, Integer param2 ->
+    println param1.toString() + "+" + param2.toString()
+    println param1 + param2
+}
+
+// Closure is a type
+Closure echoIt4 = {
+    // 'it'
+    println it
+}
+
+// echoIt()
+// echoIt2("hello", "world")
+// echoIt3(5,6)
+// echoIt4("hidden parameter 'it' is implicit")
+
+def someClosure = {
+    // last line gets evaluated and returned automatically
+    999+1
+}
+
+def oneArgMethod(closure) {
+    closure() * 2
+}
+def twoArgMethod(factor, closure) {
+    closure() * factor
+}
+
+println oneArgMethod(someClosure)
+println oneArgMethod {5} // 5 is passed in as closure
+println twoArgMethod (3, {5})
+
+// 'it' is implicitly passed in
+[1,2,3,4].each {
+    println it
+}
