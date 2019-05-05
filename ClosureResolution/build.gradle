@@ -1,0 +1,18 @@
+class Person {
+    Integer age
+    String name = "Fred"
+
+    Closure nameSayer = {
+        println name
+    }
+}
+
+def person = new Person()
+person.nameSayer()
+
+String name="Alex"
+def sayName = {
+    // holds a reference to the outside context
+    println name
+}
+sayName()

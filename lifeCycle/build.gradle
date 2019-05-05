@@ -1,0 +1,19 @@
+if (project.gradle.hasProperty("alexCustomTimestamp"))
+    logger.info ">>> build.gradle file -- executed during configuration phase. timestamp @ ${gradle.alexCustomTimestamp()}"
+else
+    logger.info ">>> build.gradle file -- executed during configuration phase. alexCustomTimestamp property should have been defined somewhere"
+
+logger.info ">>> ${project.gradle.gradleVersion}"
+logger.info ">>> ${project.gradle.gradleHomeDir}"
+logger.info ">>> ${project.gradle.gradleUserHomeDir}"
+
+if (project.hasProperty('alexProp'))
+    logger.info "property value of alexProp is $alexProp"
+else
+    logger.info "alexProp is not found"
+
+if (project.hasProperty('fromCmdLineProp'))
+    logger.info "property value of fromCmdLineProp is $fromCmdLineProp"
+else
+    logger.info " * * * * fromCmdLineProp is not found* * * * "
+

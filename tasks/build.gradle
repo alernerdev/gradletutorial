@@ -1,0 +1,22 @@
+defaultTasks 'hello'
+
+task hi
+
+project.hi.doLast {
+    println "Hi!!!"
+}
+
+task hello {
+    description = "this is the task description"
+
+    // you can assign this task to a group of other tasks
+    group = "welcome"
+
+    doFirst {
+        logger.info "My name is $name and this is my doFirst action"
+    }
+
+    doLast {
+        logger.info "My name is $name and this is my doLast action"
+    }
+}

@@ -1,0 +1,3 @@
+println "settings.gradle -> executed during the initialization phase"
+println "this is needed only for multi-projects builds"
+logger.info ">>> This is from the settings file: ${settings.gradle.gradleHomeDir}"
