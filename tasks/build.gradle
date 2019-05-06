@@ -20,3 +20,53 @@ task hello {
         logger.info "My name is $name and this is my doLast action"
     }
 }
+
+task doStartProcess {
+    doLast {
+        logger.info "$name - now starting the process"
+    }
+}
+
+task doStep2a {
+    doLast {
+        logger.info "$name - performed"
+    }
+}
+
+task doStep2b {
+    doLast {
+        logger.info "$name - performed"
+    }
+}
+
+// example of a closure that calculates dependendencies
+// this finds 2 tasks: doStep2a and doStep2b
+// conceptually, you could return a differnt task depending on the environment
+task doStep3(dependsOn:[project.tasks.findAll {task-> task.name.startsWith('doStep2')} ]) {
+    doLast {
+        logger.info "$name - performed"
+    }
+}
+
+task doFinishedProcess(dependsOn:['doStep3']) {
+    doLast {
+        logger.info " "
+        logger.info " "
+        logger.info " "
+        logger.info "$name - finished the process"
+    }
+}
+
+doStep2a.dependsOn doStartProcess, hi
+
+project.gradle.taskGraph.whenReady {
+    logger.info ">>>> $project.gradle.taskGraph.allTasks"
+}
+
+project.gradle.taskGraph.beforeTask {task ->
+    logger.info ">>>> Before task $task.name"
+}
+project.gradle.taskGraph.afterTask {task ->
+    logger.info ">>>> After task $task.name"
+}
+
